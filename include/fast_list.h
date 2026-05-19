@@ -163,6 +163,17 @@ public:
         tail = null;
         free = null;
     }
+
+    T &operator [](size_t index) {
+        size_t i = 0, current = head;
+        while(i < index && current != null) {
+            current = nodes[current].next;
+            ++i;
+        }
+        if(current == null)
+            throw std::out_of_range("Index out of range");
+        return nodes[current].object;
+    }
 };
 
 #endif
